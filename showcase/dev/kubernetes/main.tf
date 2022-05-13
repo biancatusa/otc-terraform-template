@@ -37,6 +37,8 @@ module "argocd" {
   ## Common CRD collection Configuration, see https://github.com/iits-consulting/crds-chart
   custom_resource_definitions_enabled = true
 
+  custom_resource_definitions_version = "1.1.3"
+
   ### Registry Credentials Configuration for auto inject docker pull secrets, see https://github.com/iits-consulting/registry-creds-chart
   registry_credentials_enabled      = true
   registry_credentials_dockerconfig = local.dockerconfigjsonbase64
@@ -46,7 +48,7 @@ module "argocd" {
   argocd_project_name              = "infrastructure-charts"
   argocd_git_access_token_username = "ARGO_CD_WITH_DEPLOYMENT"
   argocd_git_access_token          = var.argocd_git_access_token
-  argocd_project_source_repo_url   = "https://github.com/iits-consulting/otc-infrastructure-charts-template.git"
+  argocd_project_source_repo_url   = "https://github.com/biancatusa/otc-terraform-template.git"
   argocd_project_source_path       = "stages/${var.stage}/infrastructure-charts"
   argocd_application_values = {
     global = {
